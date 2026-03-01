@@ -1,17 +1,17 @@
 [submodule "microtar"]
 	path = third-party/microtar/src
-	url = ../microtar.git
+	url = ../../mudita/microtar.git
 [submodule "segger"]
 	path = third-party/segger
-	url = ../segger-utils.git
+	url = ../../mudita/segger-utils.git
 [submodule "protobuf"]
 	path = third-party/protobuf/src
-	url = ../protobuf.git
+	url = ../../mudita/protobuf.git
 	branch = rt1051
 	shallow = true
 [submodule "libphonenumber"]
 	path = third-party/libphonenumber/src
-	url = ../libphonenumber.git
+	url = ../../mudita/libphonenumber.git
 	branch = rt1051
 	shallow = true
 [submodule "googletest"]
@@ -20,20 +20,20 @@
 	branch = 703bd9caab50b139428cea1aaff9974ebee5742e
 [submodule "Catch2"]
 	path = test/Catch2
-	url = ../Catch2.git
+	url = ../../mudita/Catch2.git
 [submodule "date"]
 	path = third-party/date
-	url = ../date.git
+	url = ../../mudita/date.git
 [submodule "taglib"]
 	path = third-party/taglib
-	url = ../taglib.git
+	url = ../../mudita/taglib.git
 	branch = rt1051
 [submodule "btstack"]
 	path = module-bluetooth/lib/btstack
-	url = ../btstack.git
+	url = ../../mudita/btstack.git
 [submodule "pugixml"]
 	path = third-party/pugixml
-	url = ../pugixml.git
+	url = ../../mudita/pugixml.git
 [submodule "magic_enum"]
 	path = third-party/magic_enum
 	url = https://github.com/Neargye/magic_enum.git
@@ -42,7 +42,7 @@
 	url = https://github.com/codeplea/tinyexpr.git
 [submodule "fatfs"]
 	path = third-party/fatfs/src
-	url = ../fatfs.git
+	url = ../../mudita/fatfs.git
 [submodule "lfsfuse"]
 	path = host-tools/littlefs-fuse/lfsfuse
 	url = https://github.com/littlefs-project/littlefs-fuse.git
@@ -51,10 +51,10 @@
 	url = https://github.com/boost-ext/sml
 [submodule "misc"]
 	path = tools/misc
-	url = ../misc-tools.git
+	url = ../../mudita/misc-tools.git
 [submodule "harness"]
 	path = test/harness
-	url = ../QAMuditaHarness.git
+	url = ../../mudita/QAMuditaHarness.git
 	shallow = true
 [submodule "CrashDebug"]
 	path = third-party/CrashDebug/src
@@ -70,7 +70,7 @@
 	url = https://github.com/microsoft/GSL.git
 [submodule "re2"]
 	path = third-party/re2/src
-	url = ../re2.git
+	url = ../../mudita/re2.git
 	branch = rt1051
 [submodule "utz"]
 	path = third-party/utz/src/utz
@@ -84,7 +84,7 @@
 	branch = rt1051
 [submodule "usb_stack"]
 	path = third-party/usb_stack
-	url = ../usb_stack.git
+	url = ../../mudita/usb_stack.git
 [submodule "libical"]
 	path = third-party/libical/libical
 	url = https://github.com/mudita/libical
@@ -93,21 +93,21 @@
 	url = https://github.com/attractivechaos/klib.git
 [submodule "lwext4"]
 	path = third-party/lwext4/lwext4
-	url = ../lwext4.git
+	url = ../../mudita/lwext4.git
 	branch = mudita
 [submodule "third-party/dr_libs/src"]
 	path = third-party/dr_libs/src
 	url = https://github.com/mudita/dr_libs.git
 [submodule "reliance-edge"]
 	path = third-party/reedgefs/src
-	url = ../reliance-edge.git
+	url = ../../mudita/reliance-edge.git
     branch = mudita
 [submodule "third-party/msgpack11/msgpack11"]
 	path = third-party/msgpack11/msgpack11
 	url = https://github.com/ar90n/msgpack11.git
 [submodule "third-party/freeRTOS-kernel/freeRTOS-kernel"]
 	path = third-party/freeRTOS-kernel/freeRTOS-kernel
-	url = ../FreeRTOS-Kernel.git
+	url = ../../mudita/FreeRTOS-Kernel.git
 	branch = mudita
 [submodule "third-party/fakeit/FakeIt"]
 	path = third-party/fakeit/FakeIt
