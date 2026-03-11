@@ -11,6 +11,7 @@
 #include "ticks.hpp"
 #include "critical.hpp"
 #include "Logger.hpp"
+#include <magic_enum.hpp>
 #include <service-evtmgr/KbdMessage.hpp>
 #include <service-evtmgr/BatteryMessages.hpp>
 #include <service-evtmgr/ServiceEventManagerName.hpp>
@@ -230,10 +231,10 @@ namespace sys
 
     void SystemManagerCommon::StartSystem(InitFunction sysInit, InitFunction appSpaceInit, DeinitFunction sysDeinit)
     {
-        cpuStatistics = std::make_unique<CpuStatistics>();
+        cpuStatistics  = std::make_unique<CpuStatistics>();
         taskStatistics = std::make_unique<TaskStatistics>();
         powerManager   = std::make_unique<PowerManager>(*cpuStatistics, *taskStatistics);
-        deviceManager = std::make_unique<DeviceManager>();
+        deviceManager  = std::make_unique<DeviceManager>();
 
         systemInit   = std::move(sysInit);
         userInit     = std::move(appSpaceInit);
@@ -704,7 +705,8 @@ namespace sys
 
     void SystemManagerCommon::CloseSystemHandler(CloseReason closeReason)
     {
-        LOG_DEBUG("Invoking closing procedure");
+        LOG_DEBUG("Invoking closing procedure for CloseReason: %s",
+                  magic_enum::enum_name<sys::CloseReason>(closeReason).data());
 
         cpuSentinel->HoldMinimumFrequency(bsp::CpuFrequencyMHz::Level_6);
 
