@@ -4,6 +4,9 @@ When submitting code or documentation changes please follow these steps to have 
 
 ## Create a new branch or fork
 
+> [!WARNING]
+> The `Fork` button in the GitHub UI will not properly set up the relative git submodules used in this project ([GitHub issue](https://github.com/orgs/community/discussions/184954)). Prefer to clone the upstream repo, then set up your fork afterwards. See [this blog post](https://blog.tremily.us/posts/Relative_submodules/).
+
 Create a branch or fork, which name is connected to the feature, bug fix, or documentation change you want to contribute e.g. `feature/some-feature` or `fix/some-fix`.
 
 > [!NOTE]

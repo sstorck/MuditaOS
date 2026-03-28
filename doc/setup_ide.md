@@ -178,6 +178,23 @@ After the above steps:
 
 7. Build project normally.
 
+## Setting up in VS Code
+
+The [.vscode directory](../.vscode) contains the settings for running in VS Code. Notable inclusions:
+
+- [Launch configurations](../.vscode/launch.json)
+
+  This adds the appropriate settings to the `Run and Debug` panel to run the debugger for any of the `PurePhone|BellHybrid` `Linux|RT1051` debug builds.
+
+  ![Run and Debug panel dropdown](./Images/setup_ide/vscode_launch.png)
+
+- [Task configurations](../.vscode/tasks.json)
+
+    This adds tasks for configuring, building, and running all of the combinations of the `PurePhone|BellHybrid` `Linux|RT1051` builds. They show up as options under `Tasks: Run build task`.
+
+    > [!NOTE]
+    > These tasks eliminate the need for running `./configure.sh` as described in [Quickstart](quickstart.md#project-configuration).
+
 ## Additional info
 
 ### Prevent git from suggesting commits
