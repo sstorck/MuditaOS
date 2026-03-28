@@ -1,5 +1,4 @@
-MuditaOS Documentation
-======================
+# MuditaOS Documentation
 
 This folder contains the documentation of the MuditaOS.
 
@@ -23,36 +22,36 @@ Documentation listed below is system documentation listed depending on where it 
 
 - System architecture
 - Modules
-   - [Applications](../module-apps/ModuleApps.md)
-        - [Application Desktop](../module-apps/application-desktop/doc/README.md)
-        - [Notifications](../module-apps/apps-common/notifications/README.md)
-    - [Audio](../module-audio/README.md)
-    - [Bluetooth](../module-bluetooth/README.md)
-    - Database
-        - [Queries](../module-db/queries/README.md)
-        - [Tables](../module-db/Tables/README.md)
-        - [SMS and Contacts database](database_v2.md)
-    - [Filesystem](../module-vfs/README.md)
-    - [GUI](../module-gui/README.md)
-    - [Modem](../module-cellular/modem/README.md)
-    - [System](../module-sys/README.md)
+  - [Applications](../module-apps/ModuleApps.md)
+    - [Application Desktop](../module-apps/application-desktop/doc/README.md)
+    - [Notifications](../module-apps/apps-common/notifications/README.md)
+  - [Audio](../module-audio/README.md)
+  - [Bluetooth](../module-bluetooth/README.md)
+  - Database
+    - [Queries](../module-db/queries/README.md)
+    - [Tables](../module-db/Tables/README.md)
+    - [SMS and Contacts database](database_v2.md)
+  - [Filesystem](../module-vfs/README.md)
+  - [GUI](../module-gui/README.md)
+  - [Modem](../module-cellular/modem/README.md)
+  - [System](../module-sys/README.md)
 - [Services](../module-services/ModuleServices.md)
-    - [Application Manager](../module-services/service-appmgr/doc/README.md)
-    - [Bluetooth](../module-services/service-bluetooth/doc/readme.md)
-    - [Cellular](../module-services/service-cellular/doc/README.md)
-    - [Desktop](../module-services/service-desktop/README.md)
-    - [GUI](../module-services/service-gui/doc/README.md)
+  - [Application Manager](../module-services/service-appmgr/doc/README.md)
+  - [Bluetooth](../module-services/service-bluetooth/doc/readme.md)
+  - [Cellular](../module-services/service-cellular/doc/README.md)
+  - [Desktop](../module-services/service-desktop/README.md)
+  - [GUI](../module-services/service-gui/doc/README.md)
 - Utilities
-    - [How to use Logging engine](../module-utils/log/doc/logging_engine.md)
+  - [How to use Logging engine](../module-utils/log/doc/logging_engine.md)
 - Tools
-    - [MapParser](https://github.com/mudita/misc-tools/blob/master/mapparser/README.md)
-    - [PureGDB](https://github.com/mudita/misc-tools/blob/master/puregdb/README.md)
+  - [MapParser](https://github.com/mudita/misc-tools/blob/master/mapparser/README.md)
+  - [PureGDB](https://github.com/mudita/misc-tools/blob/master/puregdb/README.md)
 - [System cmake configuration](ProjectConfig.md)
 - [Development workflow](development_workflow.md)
 - [Contributing](../CONTRIBUTING.md)
 - [Internationalization](i18n.md)
 
 ## Changelog
+
 - [HOWTO](changelog_howto.md)
 - [The latest changelog](../changelog.md)
-

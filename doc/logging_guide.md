@@ -1,12 +1,11 @@
-MuditaOS Logging Guide
-======================
+# MuditaOS Logging Guide
 
 This document describes how and when we should use logs and different levels of logging.
 The main goal is to keep our log files as simple as possible, with only the most important data.
 Following these rules should make log files shorter, easier to read and give a better understanding of what is happening
 in the software.
 
-### Logging principles
+## Logging principles
 
 - Do not add any information to the log that is already included in the log prefix, such as: parent service name, file,
   line number or function name.
@@ -18,7 +17,7 @@ in the software.
 - Before adding a new log line, think about whether it is important, or whether it might be useful for debugging.
 - Try to keep the log message to a single line.
 
-### Log level description
+## Log level description
 
 - INFO — This is the default level.
   It should be used to inform about various actions and states that are taking place in software.
@@ -46,13 +45,13 @@ in the software.
   It does not include a log header.
   It should be used rarely and only when really necessary.
 
-### Reminder
+## Reminder
 
 If you find a log in the code that does not follow the rules, try to adapt it.
 This will help keep our logs in good order and prevent them from rotting.
 
-#### Development and Debugging
+## Development and Debugging
 
 When developing new features or debugging, feel free to use log levels without restriction. Also log all data
 you may need to find solutions faster.
-Before creating a PR, remember to check the logs and make sure they comply with our logging rules. 
+Before creating a PR, remember to check the logs and make sure they comply with our logging rules.

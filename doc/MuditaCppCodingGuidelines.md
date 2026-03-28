@@ -2,13 +2,13 @@
 
 ## Background
 
-Mudita adopts the C++ Core Guidelines document, which is an open-source project to maintain modern authoritative guidelines for writing C++ code using the current C++ Standard. See http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.
+Mudita adopts the C++ Core Guidelines document, which is an open-source project to maintain modern authoritative guidelines for writing C++ code using the current C++ Standard. See <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>.
 
 The Mudita C++ Coding Guidelines document is just an update to the C++ Core Guidelines. It adds new rules and exceptions to existing ones.
 
 ## Rules
 
-All the C++ Core Guidelines rules are defined in the following document: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines.
+All the C++ Core Guidelines rules are defined in the following document: <http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines>.
 
 All the C++ Core Guidelines rules are adopted to the Mudita C++ Core Guidelines.
 
@@ -34,7 +34,8 @@ The includes shall be sorted in the following order:
 - Headers from the standard library.
 
 Example:
-```
+
+```cpp
 // file: module-gui/gui/widgets/Item.cpp
 
 #include "Item.hpp"                  // Header that corresponds to this .cpp file
@@ -52,7 +53,8 @@ The current `std::to_string()` implementation from the `stdlib` used in the Mudi
 ### M-5. Strongly typed parameters shall be preferred instead of passing booleans to functions and objects.
 
 Prefer enum / struct params over bool, e.g.:
-```
+
+```cpp
 enum E { False, True };
 ```
 
@@ -63,18 +65,22 @@ See: [Motivation](https://herbsutter.com/2013/08/12/gotw-94-solution-aaa-style-a
 ### M-7. Globally visible values (variables and constants) defined in header files shall be avoided.
 
 If it is justified to use such values, use externally linked, compile-time initiated values with automatic type resolution, e.g.:
-```
+
+```cpp
 constexpr inline auto someString = "a string";
 constexpr inline auto someValue = 10U;
 ```
+
 instead of
-```
+
+```cpp
 const inline std::string someString = "a string";
 const inline unsigned someValue = 10;
 ```
 
 ### M-8. Types with compile-time initialization shall be used to declare static class constants.
-```
+
+```cpp
 class Foo {
 private:
   static constexpr auto someString = "a string";
@@ -89,6 +95,7 @@ Both upper- and lower-case of TODO, FIXME, etc. are prohibited.
 
 Doxygen comments shall not state the obvious. Don't literally describe what code does, unless the behaviour is non-obvious to a reader who understands C++ well.
 
-_Note: Don’t document implementations if declarations have been already documented._
+> [!NOTE]
+> Don’t document implementations if declarations have been already documented._
 
-### M-11. For doxygen comments, /// syntax shall be used.
+### M-11. For doxygen comments, `///` syntax shall be used.

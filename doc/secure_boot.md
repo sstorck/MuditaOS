@@ -49,7 +49,7 @@ Actually, the SRK hash may be computed over *SRK table* which contains multiple 
 This feature allow for revocation of a particular SRK in case it gets compromised.
 
 For details regarding the PKI and key generation, refer to the *Code-Signing Tool
-User’s Guide, Rev. 3.1.0*. 
+User’s Guide, Rev. 3.1.0*.
 
 The keys required for Secure Boot can be generated using the *MCUXpresso Secure
 Provisioning Tool*, an NXP utility with a graphical user interface. Alternatively,
@@ -77,7 +77,7 @@ during testing it failed to run properly when loaded using the Serial Downloader
 boot mode. This behaviour was not thoroughly investigated so the Flashloader
 may yet happen to a viable option for eFuse programming.
 
-During testing, eventually a simple program based on the *D1_Flashloader* (can be found on 
+During testing, eventually a simple program based on the *D1_Flashloader* (can be found on
 Mudita's GitHub) was used. It burned appropriate fuses using hardcoded values
 upon running it on the MCU.
 
@@ -94,6 +94,7 @@ upon running it on the MCU.
 
 Image signing is optionally performed by CMake as one of the last steps of the build
 process. In order to perform signing, the following CMake cache variables must be set:
+
 * `ENABLE_SECURE_BOOT` - CMake option which enables image signing, set it to `ON`
 * `CST_PATH` (optional) - a path to the NXP CST utility. If not specified, it is
 assumed that CST is available from PATH.
@@ -118,6 +119,7 @@ The latest version of the utility can be downloaded from the following locations
 
 You can set the required CMake variables when configuring the project using the
 `configure.sh` script:
+
 ``` bash
 ./configure.sh rt1051 RelWithDebInfo \
 -DENABLE_SECURE_BOOT=ON \

@@ -21,11 +21,12 @@ The clang-tidy tool is available from the APT repository.
 If `run-clang-tidy` program is installed, a CMake target called `clang-tidy` is available.
 
 In order to run `clang-tidy` analyzer on the MuditaOS repository, follow the steps:
-```
-$ cd <path/to/MuditaOS>
-$ ./configure.sh <platform> <build_type>
-$ cd <path/to/build/dir>
-$ make clang-tidy
+
+```sh
+cd <path/to/MuditaOS>
+./configure.sh <platform> <build_type>
+cd <path/to/build/dir>
+make clang-tidy
 ```
 
 The results of the analysis are available under `$(pwd)/StaticAnalysis` directory.

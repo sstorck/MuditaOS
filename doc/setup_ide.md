@@ -1,11 +1,11 @@
-Setting up an integrated development environment
-================================================
+# Setting up an integrated development environment
+
 - [Setting up in Eclipse](#setting-up-in-eclipse)
 - [Setting up in CLion](#setting-up-in-clion)
 - [Setting up in QtCreator](#setting-up-in-qtcreator)
 - [Additional info](#additional-info)
-    + [Prevent Git from suggesting commits](#prevent-git-from-suggesting-commits)
-    + [Seperate build folders](#separate-build-folders)
+  - [Prevent Git from suggesting commits](#prevent-git-from-suggesting-commits)
+  - [Seperate build folders](#separate-build-folders)
 
 ## Setting up in Eclipse
 
@@ -40,41 +40,49 @@ To run the project in Eclipse:
 
 ### Building configurations
 
-1. Open settings (CTRL+ALT+S)
+1. Open settings (`CTRL+ALT+S`)
 2. Go to `Build, Execution, Deployment` -> `CMake`
-3. Add new CMake Profile (ALT+Ins)
-  - Name: Linux
-  - Build type: Debug
-  - CMake options:
-    ```
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=True
-    -DCMAKE_TOOLCHAIN_FILE=../Target_Linux.cmake 
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-    ```
-  - Select appropriate Toolchain created above
-  - Generation path: `build-linux`
-  - Build options: `-j8`
+3. Add new CMake Profile (`ALT+Ins`) for Linux Debug
 
-**Note:** you can set Generation path to `build` if you don't plan to configure CLion for RT1051.
+    - Name: Linux
+    - Build type: Debug
+    - CMake options:
 
-4. Add new CMake Profile (ALT+Ins)
-  - Name: rt1051
-  - Build type: Debug
-  - CMake options:
-    ```
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=True
-    -DCMAKE_TOOLCHAIN_FILE=../Target_RT1051.cmake
-    -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ../
-    ```
-  - Select appropriate Toolchain created above
-  - Generation path: `build-rt1051`
-  - build options: `-j8`
+        ```
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=True
+        -DCMAKE_TOOLCHAIN_FILE=../Target_Linux.cmake 
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+        ```
+
+    - Select appropriate Toolchain created above
+    - Generation path: `build-linux`
+    - Build options: `-j8`
+
+    > [!NOTE]
+    > you can set Generation path to `build` if you don't plan to configure CLion for RT1051.
+
+4. Add new CMake Profile (`ALT+Ins`) for RT1051 Debug
+
+    - Name: rt1051
+    - Build type: Debug
+    - CMake options:
+
+        ```
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=True
+        -DCMAKE_TOOLCHAIN_FILE=../Target_RT1051.cmake
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ../
+        ```
+
+    - Select appropriate Toolchain created above
+    - Generation path: `build-rt1051`
+    - build options: `-j8`
 
 ### Running/debugging
+
 #### Linux configuration
 
-**Important**
-Before 1st run, execute `Build All in 'Linux'` to generate the `service_renderer` utility.
+> [!IMPORTANT]
+> Before 1st run, execute `Build All in 'Linux'` to generate the `service_renderer` utility.
 
 Go to `Edit Configurations…` (double shift) and select `CMakeApplication` -> `PurePhone`. This is your configuration for Linux executable.
 In `Working directory` append `/build`.
@@ -87,27 +95,31 @@ Use file `.idea/JLink_server.xml` to setup IDE. It's already in the project fold
 
 You'll also need `.gdbinit-1051-clion` file modified for CLion ([source](https://stackoverflow.com/questions/39810593/gdb-monitor-commands-in-clion)).
 
-This file needs to be present in `$HOME/.gdbinit`. 
+This file needs to be present in `$HOME/.gdbinit`.
 
-Try this command to input it there `ln -s %project_root%/.gdbinit-1051-clion ~/.gdbinit`. 
+Try this command to input it there `ln -s %project_root%/.gdbinit-1051-clion ~/.gdbinit`.
 
 #### Workflow
 
-In the debuging configuration dropdown select a pair of **<exec>** and **<toolchn>** (**[ \<exec\> | \<toolchn\> \]**):
+In the debuging configuration dropdown select a pair of **\<exec\>** and **\<toolchn\>** (**[ \<exec\> | \<toolchn\> \]**):
+
 - **\[PurePhone | Linux\]** for run/debug on desktop (Linux)
 - **\[JLink server | RT1051\]** for debug on embedded (RT1051)
 
-**Note:** RT1051 doesn't have *run* configuration. Only debug is available.
+> [!NOTE]
+> RT1051 doesn't have *run* configuration. Only debug is available.
 
 ![CLion screenshot 1](Images/setup_ide/clion_ss1.png)
 
 #### Running target
-It's possible to see logs from a RT1051 booted from eMMC and not from RAM. 
+
+It's possible to see logs from a RT1051 booted from eMMC and not from RAM.
 To do so select `JLink server (no upload)` configuration.
 
 Open `JLinkRTTClient` in a separate terminal.
 
-**Note:** remember to stop this debug session when you want to switch to regular JLink server (with upload), otherwise they will collide.
+> [!NOTE]
+> remember to stop this debug session when you want to switch to regular JLink server (with upload), otherwise they will collide.
 
 To properly debug a running target you need to reset it first. Attaching to an already running target won't work.
 
@@ -115,21 +127,22 @@ To properly debug a running target you need to reset it first. Attaching to an a
 
 To build separately for each architecture you need to:
 
-- Open settings (CTRL+ALT+S)
-- Goto to `Build, Execution, Deployment` -> `CMake`
-- Select `Linux`
-- Add a variable to `Environment`: `PROJECT_BUILD_DIRECTORY=build-linux`
-- Change `Generation Path` to: `build-linux`
+1. Open settings (CTRL+ALT+S)
+2. Goto to `Build, Execution, Deployment` -> `CMake`
+3. Select `Linux`
+4. Add a variable to `Environment`: `PROJECT_BUILD_DIRECTORY=build-linux`
+5. Change `Generation Path` to: `build-linux`
 
-and 
+and
 
-- Open settings (CTRL+ALT+S)
-- Go to `Build, Execution, Deployment` -> `CMake`
-- Select `rt1051`
-- Add a variable to `Environment`: `PROJECT_BUILD_DIRECTORY=build-rt1051`
-- Change `Generation Path` to: `build-rt1051`
+1. Open settings (CTRL+ALT+S)
+2. Go to `Build, Execution, Deployment` -> `CMake`
+3. Select `rt1051`
+4. Add a variable to `Environment`: `PROJECT_BUILD_DIRECTORY=build-rt1051`
+5. Change `Generation Path` to: `build-rt1051`
 
-After the above steps: 
+After the above steps:
+
 - Change run/debug `Working directory` for Linux configuration. (`Edit configurations…` -> `PurePhone`)
 - Change `Working directory` from `…/PurePhone/build` to `…PurePhone/build-linux`
 
@@ -142,24 +155,28 @@ After the above steps:
 
 ### Project configurations
 
-- Go to `File` -> `Open File or Project...` and select the `CMakeLists.txt` project file.
-- After selecting the kits you wish to use select the `Projects` button on the left bar.
-- Ensure `PureOS` is the active project.
-- Select `Build` under the name of the kit you wish to configure.
-- At the top of the `Build Settings` page, select the build configuration you want to modify.
-- In the `Initial CMake parameters:` field, _append_ one of the following:
+1. Go to `File` -> `Open File or Project...` and select the `CMakeLists.txt` project file.
+2. After selecting the kits you wish to use select the `Projects` button on the left bar.
+3. Ensure `PureOS` is the active project.
+4. Select `Build` under the name of the kit you wish to configure.
+5. At the top of the `Build Settings` page, select the build configuration you want to modify.
+6. In the `Initial CMake parameters:` field, *append* one of the following:
 
     **For Linux Target:**
+
     ```
     -DCMAKE_TOOLCHAIN_FILE:STRING=Target_Linux.cmake
     -DPRODUCT:STRING=PurePhone
     ```
+
     **For RT1051 Target:**
+
     ```
     -DCMAKE_TOOLCHAIN_FILE:STRING=Target_RT1051.cmake
     -DPRODUCT:STRING=PurePhone
     ```
-- Build project normally.
+
+7. Build project normally.
 
 ## Additional info
 
@@ -186,7 +203,7 @@ By default `./rebuild.sh rt1051` builds into `build`
 
 You can build only the Linux build inside its separate folder, and leave RT1051 in place, thus maintain compatibility with `./run.sh`.
 
-```
+```bash
 > env SEPARATE_BUILDS=1 ./rebuild.sh linux
 > cd build-linux; ./PurePhone.elf
 > cd ..

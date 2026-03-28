@@ -7,7 +7,7 @@ migration tool.
 
 Here's an example of a database directory structure:
 
-```
+```bash
 products/<product>/services/db/databases/
 └── migration
     ├── db_1
@@ -63,7 +63,7 @@ It contains all the required SQL operations to apply migration.
 
 Example:
 
-```
+```sql
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   title VARCHAR NOT NULL,
@@ -78,7 +78,7 @@ Similarly, this file contains all the required SQL operations to revert migratio
 
 Example:
 
-```
+```sql
 DROP TABLE posts
 ```
 
@@ -86,6 +86,7 @@ DROP TABLE posts
 
 You can put there SQL operations that you would use during product development. They will be applied
 along with the `up.sql`.
+
 > Development features are not applied as part of official releases. They are only being used
 > for internal development needs.
 
@@ -98,7 +99,7 @@ of the same database schemas in different products.
 
 An example of such a file is listed below:
 
-```
+```json
 {
   "product": {
     "databases":[
@@ -125,7 +126,7 @@ Database migration operations are handled by using the [migration tool](../tools
 
 Currently, it supports:
 
-```
+```man
 init - init migration environment
 revision - create a new migration revision
 commit - merge all the existing revisions and generate a new frozen database version
@@ -137,7 +138,7 @@ redo - execute down.sql and up.sql scripts for the newest migration
 
 All the required info regarding specific subcommands can be printed by passing `--help` as its argument, for instance:
 
-```
+```bash
 python3 db_migration.py revision --help                            
 usage: db_migration.py revision [-h] [-e ENV] --db DB -m MESSAGE
 
@@ -158,10 +159,16 @@ Below, there is a detailed step-by-step instruction on how to add/update databas
 
 1. Add CMake build directory to the env variable: `export DB_MIGRATION_ENV=<build_dir>`. This step is optional but
    highly recommended. Without it, you would need to pass it each time you invoke the migration tool.
-2. Execute `python3 db_migration.py revision --db <database_you_want_to_update> -m "Short description of the revision"`.
+2. Execute
+
+   ```bash
+   python3 db_migration.py revision --db <database_you_want_to_update> -m "Short description of the revision"
+   ```
+
    This will create a `current` folder(if it doesn't exist already) and place a revision entry under it.
    The revision entry looks like this:
-   ``` 
+
+   ```bash
    current
    └── 65a9ee3e_description
         ├── .meta 
@@ -169,6 +176,7 @@ Below, there is a detailed step-by-step instruction on how to add/update databas
         ├── down.sql
         └── up.sql
    ```
+
    Its name(`65a9ee3e_description`) is created from the first 8 chars of the assigned unique ID and description string
    that you passed to the command. The script also generated a set of empty SQL files: `up.sql`, `down.sql`
    and `devel.sql`
@@ -189,7 +197,9 @@ Below, there is a detailed step-by-step instruction on how to add/update databas
 
 When the time has come for issuing a new official database release all you have to do is invoke the:
 
-`python3 db_migration.py commit`
+```bash
+python3 db_migration.py commit
+```
 
 This command will do the following steps for each database specified in `databases.json`:
 
@@ -198,8 +208,11 @@ This command will do the following steps for each database specified in `databas
 * copy merged revisions to the newly created version directory
 * remove the `current` folder
 
-You can also commit each database manually by invoking the:
+You can also commit each database manually by invoking:
 
-`python3 db_migration.py commit --db <database_name>`
+```bash
+python3 db_migration.py commit --db <database_name>
+```
 
+> [!WARNING]
 > These operations are irreversible.

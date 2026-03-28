@@ -7,10 +7,12 @@ Each subdirectory is exclusive to an application that uses it hence it is relati
 to a specific application.
 
 ### Internal partition
+
 Internal partition stores proprietary assets that can't be accessed/modified by a user. Its structure and contents are created
-at compile time. For technical info, please check the [CMake section](#CMake).
+at compile time. For technical info, please check the [CMake section](#cmake).
 
 Structure template:
+
 ```
 assets/audio/
         ├── app_1
@@ -20,6 +22,7 @@ assets/audio/
 ```
 
 For instance, Harmony directory:
+
 ```
 assets/audio/
         └── relaxation
@@ -29,12 +32,14 @@ Each product can have its structure freely defined. There are no restrictions ap
 proprietary assets path in Pure as it is not required. It is because the Pure MusicPlayer application only loads assets from the user partition.
 
 ### User partition
+
 User partition stores assets that may be accessed by using the Mudita Center. In contrast to the [Internal partition](#Internal partition),
 its permissions are set to write/read. It follows the same structure as the internal partition, i.e. each application has
 its subdirectory used exclusively. Its structure is also created at compile time, and its contents can be propagated with assets or not,
-it depends on the product. For technical info, please check the [CMake section](#CMake).
+it depends on the product. For technical info, please check the [CMake section](#cmake).
 
 Structure template:
+
 ```
 user/
 └── audio
@@ -43,13 +48,17 @@ user/
      ├── app_3
      └── app_n
 ```
+
 For instance, Harmony directory:
+
 ```
 user/
 └── audio
      └── relaxation
 ```
+
 and PurePhone:
+
 ```
 user/
 └── audio
@@ -57,6 +66,7 @@ user/
 ```
 
 ## Storage
+
 It is the directory accessible via MTP. Its purpose is to provide space for storing user files.
 
 ```
@@ -73,5 +83,3 @@ There are two targets created by using the script above,
 `user_directories_common` and `user_directories`. The first one creates common directories which are required for PureOS.
 The latter is used to create required product-related directories. They are both added as a dependency to both `BellHybrid-disk-img` and
 `PurePhone-disk-img` targets hence they will be invoked automatically upon generating the product image.
-
-

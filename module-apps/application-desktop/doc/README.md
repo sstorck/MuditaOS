@@ -1,33 +1,30 @@
-#Auto-locking mechanism
-PurePhone screen can be locked automatically due to user inactivity.  
-The Auto-locking mechanism is controlled by 'gs_auto_lock_time' parameter settings stored in database.
-Initial value for 'gs_auto_lock_time' (units for value is ms) can be changed in image/user/db/settings_v2_002.sql.
-Values lower than 1000 (<1s) are treated as 0 and thus disable auto-locking.
-Auto lock action is performed only if following conditions are met:
- - tethering is off
- - focused application does not prevent auto-locking
+# SIM PIN flow
 
-
-
-#SIM PIN flow
+> [!NOTE]
+> PurePhone screen can be locked automatically due to user inactivity. The Auto-locking mechanism is controlled by `gs_auto_lock_time` parameter settings stored in database. Initial value for `gs_auto_lock_time` (units for value is ms) can be changed in image/user/db/settings_v2_002.sql. Values lower than 1000 (<1s) are treated as 0 and thus disable auto-locking. Auto lock action is performed only if following conditions are met:
+>
+> - tethering is off
+> - focused application does not prevent auto-locking
 
 The PIN/PUK-related flow between SIM card and `PurePhone` `User` is directed by three main entities:
-1. `Service Cellular` that is responsible for handling modem interactions in this context     
-2. `ApplicationsManager` that is responsible for `ApplicationDesktop` management and reliable messaging in the `Service->Application` direction in this context. 
-3. `ApplicationDesktop` that is responsible for `PurePhone<->User` interactions in this context 
+
+1. `Service Cellular` that is responsible for handling modem interactions in this context
+2. `ApplicationsManager` that is responsible for `ApplicationDesktop` management and reliable messaging in the `Service->Application` direction in this context.
+3. `ApplicationDesktop` that is responsible for `PurePhone<->User` interactions in this context
 
 Following document focus mainly on (above listed) entities interactions and flow. Occasionally minimal interaction with other entities (such as `User` or `modem`) is outlined.  
 
 ## Functional Decomposition
 
 Basic interactions can be captured by following interfaces:
-1. `Service Cellular` realizes 
-    * `SrvCellularMessageHandler`
+
+1. `Service Cellular` realizes
+    - `SrvCellularMessageHandler`
 2. `ApplicationsManager` realizes
-    * `APMActions`
+    - `APMActions`
 3. `ApplicationDesktop` realizes
-    * `AppDesktopActionHandler`
-    
+    - `AppDesktopActionHandler`
+
 ![](appdesktop_functionalDecomposition.png)
 
 ![](appdesktop_interfaces.png)
@@ -41,7 +38,8 @@ Each flow in this context consists of single action originating in `ServiceCellu
 ![](appdesktop_pinflow_overview.png)
 
 ## PIN flow
-### PIN required basic flow:
+
+### PIN required basic flow
 
 ![](appdesktop_pinflow.png)
 
@@ -50,7 +48,8 @@ Each flow in this context consists of single action originating in `ServiceCellu
 ![](appdesktop_pinflow_withFailure.png)
 
 ## PUK flow
-### PUK required basic flow:
+
+### PUK required basic flow
 
 ![](appdesktop_pukflow.png)
 
@@ -75,6 +74,3 @@ Each flow in this context consists of single action originating in `ServiceCellu
 ### Flow with potential race
 
 ![](appdesktop_pinflow_simrace.png)
-
-
-
